@@ -6,7 +6,8 @@
 
 :root {
     --containerSize: 600px;
-    --cellSize: calc(var(--containerSize) / 4);
+    /* --cellSize is defined with javascript */
+    --cellSize: 0px;
 }
 
 #grid-container {
@@ -21,7 +22,7 @@
 }
 
 .grid-cell {
-    border: 0.1px solid black;
+    border: 0.1px solid grey;
     width: var(--cellSize);
     height: var(--cellSize);
     background-color: lightgrey;

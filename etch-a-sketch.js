@@ -1,8 +1,13 @@
-//nbrOfCells must be a square number (16 25 36 49 64 81 100)
-const nbrOfCells = 16;
-const axisSize = Math.sqrt(nbrOfCells);
+const axisSize = 12;
+const nbrOfCells = axisSize**2;
 
-const gridContainer = document.getElementById("grid-container");
+const rootElem = document.querySelector(":root");
+//600 is the size of the container, make sure it match the css value
+rootElem.style.setProperty("--cellSize", (600 / axisSize)+"px");
+
+
+
+const gridContainer = document.querySelector("#grid-container");
 
 for (let i = 0; i < axisSize; i++) {
     const columnDiv = document.createElement("div");
@@ -22,6 +27,8 @@ for (let i = 0; i < axisSize; i++) {
 
 const gridCells = document.querySelectorAll(".grid-cell");
 
-for (const x of gridCells) {
-    x.addEventListener("mouseenter", () => {x.style.background = "coral"});
-}
+gridCells.forEach((cell) => {
+    cell.addEventListener("mouseenter", () => {
+        cell.style.background = "coral"
+    });
+})

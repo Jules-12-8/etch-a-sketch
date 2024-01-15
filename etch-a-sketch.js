@@ -1,4 +1,4 @@
-//nbrOfCells must be a square number
+//nbrOfCells must be a square number (16 25 36 49 64 81 100)
 const nbrOfCells = 16;
 const axisSize = Math.sqrt(nbrOfCells); 
 

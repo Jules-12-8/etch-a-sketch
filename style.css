@@ -4,16 +4,25 @@
     padding: 0px;
 }
 
+:root {
+    --containerSize: 600px;
+    --cellSize: calc(var(--containerSize) / 4);
+}
+
 #grid-container {
-    margin-top: 5rem;
-    border-color: red;
+    margin: 3rem;
+    width: var(--containerSize);
+    height: var(--containerSize);
+    border: 1px solid red;
     display: flex;
     flex-wrap: nowrap;
+    align-items: center;
     justify-content: center;
-    /* align-content: center; */
 }
 
 .grid-cell {
     border: 0.1px solid black;
-    padding: 50px;
+    width: var(--cellSize);
+    height: var(--cellSize);
+    background-color: lightgrey;
 }

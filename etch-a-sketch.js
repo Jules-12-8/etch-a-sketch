@@ -31,4 +31,11 @@ gridCells.forEach((cell) => {
     cell.addEventListener("mouseenter", () => {
         cell.style.background = "coral"
     });
-})
+});
+
+
+const resetButton = document.querySelector("#reset");
+
+resetButton.addEventListener("click", () => {
+    gridCells.forEach((cell) => cell.style.background = "lightgrey");
+});

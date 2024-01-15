@@ -1,19 +1,20 @@
+//nbrOfCells must be a square number
 const nbrOfCells = 16;
 const axisSize = Math.sqrt(nbrOfCells); 
 
 const gridContainer = document.getElementById("grid-container");
 
 for (let i = 0; i < axisSize; i++) {
-    const rowDiv = document.createElement("div");
-    rowDiv.classList.add(`row-${i}`);
-    gridContainer.appendChild(rowDiv);
+    const columnDiv = document.createElement("div");
+    columnDiv.classList.add(`column-${i}`);
+    gridContainer.appendChild(columnDiv);
 
-    const row = document.querySelector("div.row-"+i);
+    const column = document.querySelector("div.column-"+i);
 
     for (let i = 0; i < axisSize; i++) {
         const div = document.createElement("div");
         console.log(div);
         div.classList.add("grid-cell");
-        row.appendChild(div);
+        column.appendChild(div);
     }
 }

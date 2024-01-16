@@ -48,6 +48,25 @@ function createDrawListeners() {
 
 createDrawListeners();
 
+
+function computeRandValue() {
+    return Math.trunc(Math.random() * 256);
+}
+
+function getRandRgbValue() {
+    return "rgb("+computeRandValue()+","+computeRandValue()+","+computeRandValue()+")";
+}
+
+
+function createRandDrawListeners() {
+    const gridCells = document.querySelectorAll(".grid-cell");
+    gridCells.forEach((cell) => {
+        cell.addEventListener("mouseenter", () => {
+            cell.style.background = getRandRgbValue();
+        });
+    });
+}
+
 const resetButton = document.querySelector("#reset");
 
 resetButton.addEventListener("click", () => {
@@ -60,7 +79,7 @@ resetButton.addEventListener("click", () => {
 const sizeControl = document.querySelector("#size-control");
 //Populate the select element with the options
 for (let i = 4; i <= 124; i = (i*1.5 + (i*1.5%2))) {
-    console.log(i);
+    // console.log(i);
     const option = document.createElement("option");
     option.value = i;
     option.text = i;

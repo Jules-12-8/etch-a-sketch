@@ -38,16 +38,16 @@
 }
 
 button {
-    padding: 0.3rem;
-    background-color: lightgrey;
+    padding: 0.15rem;
+    /* background-color: lightgrey; */
     /* border: none; */
 }
 
 button:hover {
-    background-color: darkgrey;
+    /* background-color: darkgrey; */
 }
 
 #size-control {
-    padding: 0.2rem;
+    padding: 0.1rem;
     text-align: center;
 }

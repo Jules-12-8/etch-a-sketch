@@ -10,20 +10,6 @@
     --cellSize: 0px;
 }
 
-button {
-    padding: 0.5rem;
-    background-color: lightgrey;
-    border: none;
-}
-
-button:hover {
-    background-color: darkgrey;
-}
-
-#reset {
-    margin-left: 3rem;
-}
-
 #grid-container {
     margin: 3rem;
     width: var(--containerSize);
@@ -40,4 +26,28 @@ button:hover {
     width: var(--cellSize);
     height: var(--cellSize);
     background-color: lightgrey;
+}
+
+
+#parameters-container {
+    width: 600px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-left: 3rem;
+}
+
+button {
+    padding: 0.3rem;
+    background-color: lightgrey;
+    /* border: none; */
+}
+
+button:hover {
+    background-color: darkgrey;
+}
+
+#size-control {
+    padding: 0.2rem;
+    text-align: center;
 }

@@ -1,9 +1,9 @@
-const axisSize = 12;
-const nbrOfCells = axisSize**2;
+const axisSize = 4;
+const nbrOfCells = axisSize ** 2;
 
 const rootElem = document.querySelector(":root");
 //600 is the size of the container, make sure it match the css value
-rootElem.style.setProperty("--cellSize", (600 / axisSize)+"px");
+rootElem.style.setProperty("--cellSize", (600 / axisSize) + "px");
 
 
 
@@ -39,3 +39,25 @@ const resetButton = document.querySelector("#reset");
 resetButton.addEventListener("click", () => {
     gridCells.forEach((cell) => cell.style.background = "lightgrey");
 });
+
+
+
+const sizeControl = document.querySelector("#size-control");
+//Populate the select element with the options
+for (let i = 4; i < 65; i = i*2) {
+    console.log(i);
+    const option = document.createElement("option");
+    option.value = i;
+    option.text = i;
+    sizeControl.appendChild(option);
+}
+
+const sizeOption = document.querySelectorAll("option");
+let sizeVal;
+
+sizeOption.forEach((option) => {
+    option.addEventListener("click", () => {
+        sizeVal = sizeControl.value;
+        console.log(sizeVal);
+    });
+})

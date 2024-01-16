@@ -1,42 +1,57 @@
+const gridWidth = 600;
 const axisSize = 4;
 const nbrOfCells = axisSize ** 2;
 
 const rootElem = document.querySelector(":root");
-//600 is the size of the container, make sure it match the css value
-rootElem.style.setProperty("--cellSize", (600 / axisSize) + "px");
+
+function setCellSize(gridWidth, axisSize) {
+    //600 is the size of the container, make sure it match the css value
+    rootElem.style.setProperty("--cellSize", (gridWidth / axisSize) + "px");
+}
+
+setCellSize(gridWidth, axisSize);
 
 
 
 const gridContainer = document.querySelector("#grid-container");
 
-for (let i = 0; i < axisSize; i++) {
-    const columnDiv = document.createElement("div");
-    columnDiv.classList.add(`column-${i}`);
-    gridContainer.appendChild(columnDiv);
+function createGrid(size) {
+    for (let i = 0; i < size; i++) {
+        const columnDiv = document.createElement("div");
+        columnDiv.classList.add(`column-${i}`);
+        gridContainer.appendChild(columnDiv);
 
-    const column = document.querySelector("div.column-" + i);
+        const column = document.querySelector("div.column-" + i);
 
-    for (let i = 0; i < axisSize; i++) {
-        const div = document.createElement("div");
-        div.classList.add("grid-cell");
-        column.appendChild(div);
+        for (let i = 0; i < size; i++) {
+            const div = document.createElement("div");
+            div.classList.add("grid-cell");
+            column.appendChild(div);
+        }
     }
 }
 
+createGrid(axisSize);
 
 
-const gridCells = document.querySelectorAll(".grid-cell");
 
-gridCells.forEach((cell) => {
-    cell.addEventListener("mouseenter", () => {
-        cell.style.background = "coral"
+
+function createDrawListeners() {
+    const gridCells = document.querySelectorAll(".grid-cell");
+
+    gridCells.forEach((cell) => {
+        cell.addEventListener("mouseenter", () => {
+            cell.style.background = "coral"
+        });
     });
-});
+}
 
+createDrawListeners();
 
 const resetButton = document.querySelector("#reset");
 
 resetButton.addEventListener("click", () => {
+    const gridCells = document.querySelectorAll(".grid-cell");
     gridCells.forEach((cell) => cell.style.background = "lightgrey");
 });
 
@@ -44,7 +59,7 @@ resetButton.addEventListener("click", () => {
 
 const sizeControl = document.querySelector("#size-control");
 //Populate the select element with the options
-for (let i = 4; i < 65; i = i*2) {
+for (let i = 4; i <= 124; i = (i*1.5 + (i*1.5%2))) {
     console.log(i);
     const option = document.createElement("option");
     option.value = i;
@@ -55,9 +70,22 @@ for (let i = 4; i < 65; i = i*2) {
 const sizeOption = document.querySelectorAll("option");
 let sizeVal;
 
+// sizeOption.forEach((option) => {
+//     option.addEventListener("click", () => {
+//         sizeVal = sizeControl.value;
+//         console.log(sizeVal);
+//     });
+// })
+
 sizeOption.forEach((option) => {
     option.addEventListener("click", () => {
-        sizeVal = sizeControl.value;
-        console.log(sizeVal);
+        const cellsDivs = document.querySelectorAll("div[class^='column']");
+        cellsDivs.forEach((col) => {
+            col.remove();
+        });
+        const size = sizeControl.value;
+        setCellSize(gridWidth, size);
+        createGrid(size);
+        createDrawListeners();
     });
 })

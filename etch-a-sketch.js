@@ -1,6 +1,5 @@
 const gridWidth = 600;
 const axisSize = 4;
-const nbrOfCells = axisSize ** 2;
 
 const rootElem = document.querySelector(":root");
 
@@ -10,7 +9,6 @@ function setCellSize(gridWidth, axisSize) {
 }
 
 setCellSize(gridWidth, axisSize);
-
 
 
 const gridContainer = document.querySelector("#grid-container");
@@ -34,8 +32,6 @@ function createGrid(size) {
 createGrid(axisSize);
 
 
-
-
 function createDrawListeners() {
     const gridCells = document.querySelectorAll(".grid-cell");
 
@@ -57,9 +53,9 @@ function getRandRgbValue() {
     return "rgb("+computeRandValue()+","+computeRandValue()+","+computeRandValue()+")";
 }
 
-
 function createRandDrawListeners() {
     const gridCells = document.querySelectorAll(".grid-cell");
+
     gridCells.forEach((cell) => {
         cell.addEventListener("mouseenter", () => {
             cell.style.background = getRandRgbValue();
@@ -67,42 +63,41 @@ function createRandDrawListeners() {
     });
 }
 
+
 const resetButton = document.querySelector("#reset");
 
 resetButton.addEventListener("click", () => {
     const gridCells = document.querySelectorAll(".grid-cell");
+
     gridCells.forEach((cell) => cell.style.background = "lightgrey");
 });
 
 
-
 const sizeControl = document.querySelector("#size-control");
+
 //Populate the select element with the options
 for (let i = 4; i <= 124; i = (i*1.5 + (i*1.5%2))) {
     // console.log(i);
     const option = document.createElement("option");
+
     option.value = i;
     option.text = i;
     sizeControl.appendChild(option);
 }
 
-const sizeOption = document.querySelectorAll("option");
-let sizeVal;
 
-// sizeOption.forEach((option) => {
-//     option.addEventListener("click", () => {
-//         sizeVal = sizeControl.value;
-//         console.log(sizeVal);
-//     });
-// })
+const sizeOption = document.querySelectorAll("option");
 
 sizeOption.forEach((option) => {
     option.addEventListener("click", () => {
         const cellsDivs = document.querySelectorAll("div[class^='column']");
+
         cellsDivs.forEach((col) => {
             col.remove();
         });
+
         const size = sizeControl.value;
+
         setCellSize(gridWidth, size);
         createGrid(size);
         createDrawListeners();

@@ -32,7 +32,6 @@
 #parameters-container {
     width: 600px;
     display: flex;
-    /* justify-content: space-between; */
     align-items: center;
     margin-left: 3rem;
 }
@@ -40,12 +39,6 @@
 button {
     padding: 0.15rem;
     margin-right: auto;
-    /* background-color: lightgrey; */
-    /* border: none; */
-}
-
-button:hover {
-    /* background-color: darkgrey; */
 }
 
 #size-control {

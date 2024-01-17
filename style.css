@@ -11,7 +11,7 @@
 }
 
 #grid-container {
-    margin: 3rem;
+    margin: 3rem auto;
     width: var(--containerSize);
     height: var(--containerSize);
     border: 1px solid red;
@@ -33,7 +33,7 @@
     width: 600px;
     display: flex;
     align-items: center;
-    margin-left: 3rem;
+    margin: auto;
 }
 
 button {

@@ -126,8 +126,14 @@ for (let i = 4; i <= 124; i = (i * 1.5 + (i * 1.5 % 2))) {
     sizeControl.appendChild(option);
 }
 
+sizeControl.addEventListener("change", () => {
+    console.log("change");
+    changeParameters();
+});
+
 
 function changeParameters() {
+    console.log('change');
     const cellsDivs = document.querySelectorAll("div[class^='column']");
 
     cellsDivs.forEach((col) => {
@@ -140,9 +146,3 @@ function changeParameters() {
     createGrid(size);
     createDrawListeners(drawStyle);
 }
-
-const sizeOption = document.querySelectorAll("option");
-
-sizeOption.forEach((option) => {
-    option.addEventListener("click", () => changeParameters());
-});
